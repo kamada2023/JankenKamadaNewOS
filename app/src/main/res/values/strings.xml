@@ -1,0 +1,35 @@
+<resources>
+    <string name="title_activity_title">TitleActivity</string>
+    <string name="app_name">じゃんけんゲームjetpackCompose</string>
+    <string name="chara_speech">僕と勝負だ！！</string>
+    <string name="total_result">%1$d勝ち%2$d負け%3$d引き分け</string>
+    <string name="battle_format">対戦形式</string>
+    <string name="round_robin_battle">総当たり戦</string>
+    <string name="star_battle">星取り＿戦</string>
+    <string name="explanation_rule">ルール</string>
+    <string name="rule_robin">1.対戦形式は任意で1～10まで対戦できます\n2.対戦は勝敗に問わずカウントします\n3.設定した値まで終了しません\n4.結果は総合的に判断します\n\n\n</string>
+    <string name="rule_star">1.対戦形式は任意で1～10まで対戦できます\n2.設定した回戦数の半分以上を満たした\n場合終了します\n3.設定した回数を達した場合終了します\n4.設定した回数が半分以上があいこだった\n場合は引き分けとします</string>
+    <string name="game_start">ゲームスタート</string>
+    <string name="round1">回数：%1$d</string>
+    <string name="rounds">第%1$d戦目：じゃーんけーん......</string>
+    <string name="title">じゃーんけーん......</string>
+    <string name="subtitle">画像をタップしてね</string>
+    <string name="cpu">相手</string>
+    <string name="user">自分</string>
+    <string name="draw">引き分け</string>
+    <string name="win">あんたの勝ち！！</string>
+    <string name="lose">あなたの負け．．</string>
+    <string name="next_scene">次のシーンへ</string>
+    <string name="next_result">リザルト画面へ</string>
+    <string name="next_select">セレクト画面へ</string>
+    <string name="char_self">僕と勝負だ！！</string>
+    <string name="reset">RESET BUTTON</string>
+    <string name="halfway_title">途中経過......</string>
+    <string name="halfway_sub">%1$d戦目だよ</string>
+    <string name="next_battle">次の対戦へ</string>
+    <string name="result">結果発表!!</string>
+    <string name="win_count">勝った数：%1$d</string>
+    <string name="lose_count">負けた数：%1$d</string>
+    <string name="draw_count">引き分け数：%1$d</string>
+    <string name="back_title">タイトルへ</string>
+</resources>
