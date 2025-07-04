@@ -32,4 +32,5 @@
     <string name="lose_count">負けた数：%1$d</string>
     <string name="draw_count">引き分け数：%1$d</string>
     <string name="back_title">タイトルへ</string>
+    <string name="title_activity_select">SelectActivity</string>
 </resources>

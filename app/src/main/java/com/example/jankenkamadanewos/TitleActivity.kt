@@ -14,7 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -22,19 +22,37 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class TitleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Title()
+            RockPaperScissorsApp()
         }
     }
 }
 
+enum class Nav {
+    TitleScreen,
+    SelectScreen,
+}
+
 @Composable
-fun Title() {
+fun RockPaperScissorsApp(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = Nav.TitleScreen.name){
+        composable(route = Nav.TitleScreen.name) { Title(navController) }
+        composable(route = Nav.SelectScreen.name) { Select() }
+    }
+}
+
+@Composable
+fun Title(navController: NavController) {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -92,7 +110,7 @@ fun Title() {
         )
 
         Button(
-            onClick = { moveSelect() },
+            onClick = { navController.navigate(Nav.SelectScreen.name) },
             shape = MaterialTheme.shapes.small,
             modifier = Modifier
                 .fillMaxWidth()
@@ -108,23 +126,23 @@ fun Title() {
     }
 }
 
-private fun moveSelect() {
-    //val intent = Intent(application, SelectActivity::class.java)
-    //startActivity(intent)
-}
+//private fun moveSelect() {
+//    //val intent = Intent(application, SelectActivity::class.java)
+//    //startActivity(intent)
+//}
 
 @SuppressLint("UnrememberedMutableState", "RememberReturnType")
 @Composable
 fun ResetButton(modifier: Modifier) {
     val countApp = CountApp.create()
     //初回コンポーズ時実行
-    var clearWin by mutableStateOf(
+    var clearWin by mutableIntStateOf(
         countApp.getNumOfWins()
     )
-    var clearLose by mutableStateOf(
+    var clearLose by mutableIntStateOf(
         countApp.getNumOfLoses()
     )
-    var clearDraw by mutableStateOf(
+    var clearDraw by mutableIntStateOf(
         countApp.getNumOfDraws()
     )
 
@@ -153,8 +171,8 @@ fun ResetButton(modifier: Modifier) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = false)
 @Composable
 fun GreetingPreview() {
-    Title()
+    RockPaperScissorsApp()
 }
