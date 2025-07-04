@@ -15,10 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 
 private val countApp = CountApp.create()
 @Composable
-fun Select() {
+fun Select(navController: NavController) {
     var mode by remember { mutableIntStateOf(0) }
     var count by remember { mutableIntStateOf(1) }
     var ruleText: String
@@ -126,7 +127,7 @@ fun Select() {
             onClick = {
                 countApp.setCount(count)
                 countApp.setBattleFormat(mode)
-                moveMain()
+                navController.navigate(Nav.MainScreen.name)
             },
             modifier = Modifier.constrainAs(gameStart) {
                 bottom.linkTo(parent.bottom)
@@ -137,9 +138,4 @@ fun Select() {
             Text(text = stringResource(id = R.string.game_start), fontSize = 36.sp)
         }
     }
-}
-
-private fun moveMain() {
-//    val intent = Intent(application, MainActivity::class.java)
-//    startActivity(intent)
 }

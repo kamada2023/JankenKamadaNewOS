@@ -40,6 +40,15 @@ class TitleActivity : ComponentActivity() {
 enum class Nav {
     TitleScreen,
     SelectScreen,
+    MainScreen,
+    HalfwayProgressScreen,
+    FinalResultScreen
+}
+
+enum class MyHand {
+    GU,
+    CH,
+    PA
 }
 
 @Composable
@@ -47,7 +56,17 @@ fun RockPaperScissorsApp(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Nav.TitleScreen.name){
         composable(route = Nav.TitleScreen.name) { Title(navController) }
-        composable(route = Nav.SelectScreen.name) { Select() }
+        composable(route = Nav.SelectScreen.name) { Select(navController) }
+        composable(route = Nav.MainScreen.name) { Main(navController) }
+        composable("ResultScreen/{message}") {backStackEntry ->
+            Result(
+                user = backStackEntry.arguments?.getInt("message")?: 0,
+                navController = navController
+            )
+        }
+        composable(route = Nav.HalfwayProgressScreen.name) { HalfwayProgress(navController) }
+        composable(route = Nav.FinalResultScreen.name) { FinalResult(navController) }
+
     }
 }
 
@@ -125,11 +144,6 @@ fun Title(navController: NavController) {
         }
     }
 }
-
-//private fun moveSelect() {
-//    //val intent = Intent(application, SelectActivity::class.java)
-//    //startActivity(intent)
-//}
 
 @SuppressLint("UnrememberedMutableState", "RememberReturnType")
 @Composable
