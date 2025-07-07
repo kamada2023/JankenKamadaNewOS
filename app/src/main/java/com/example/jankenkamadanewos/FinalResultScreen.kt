@@ -133,11 +133,5 @@ fun ResultImage(modifier: Modifier, result: Int) {
     }
 }
 
-//private fun moveTitle() {
-//    countApp.clearResult()
-//    navController.navigate(Nav.MainScreen.name)
-//    //val intent = Intent(application, TitleActivity::class.java)
-//    //startActivity(intent)
-//}
 //override fun onBackPressed() {
 //}

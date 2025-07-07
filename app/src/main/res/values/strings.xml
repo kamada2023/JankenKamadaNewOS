@@ -1,5 +1,4 @@
 <resources>
-    <string name="title_activity_title">TitleActivity</string>
     <string name="app_name">じゃんけんゲームjetpackCompose</string>
     <string name="chara_speech">僕と勝負だ！！</string>
     <string name="total_result">%1$d勝ち%2$d負け%3$d引き分け</string>
@@ -32,5 +31,5 @@
     <string name="lose_count">負けた数：%1$d</string>
     <string name="draw_count">引き分け数：%1$d</string>
     <string name="back_title">タイトルへ</string>
-    <string name="title_activity_select">SelectActivity</string>
+    <string name="title_activity_title">TitleActivity</string>
 </resources>

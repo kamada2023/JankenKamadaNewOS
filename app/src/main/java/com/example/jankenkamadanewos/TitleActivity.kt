@@ -41,14 +41,9 @@ enum class Nav {
     TitleScreen,
     SelectScreen,
     MainScreen,
+    ResultScreen,
     HalfwayProgressScreen,
     FinalResultScreen
-}
-
-enum class MyHand {
-    GU,
-    CH,
-    PA
 }
 
 @Composable
@@ -58,11 +53,9 @@ fun RockPaperScissorsApp(){
         composable(route = Nav.TitleScreen.name) { Title(navController) }
         composable(route = Nav.SelectScreen.name) { Select(navController) }
         composable(route = Nav.MainScreen.name) { Main(navController) }
-        composable("ResultScreen/{message}") {backStackEntry ->
-            Result(
-                user = backStackEntry.arguments?.getInt("message")?: 0,
-                navController = navController
-            )
+        composable(route = Nav.ResultScreen.name) {
+            val game = Game.create()
+            Result(user = game.getSelectedHand(), navController = navController)
         }
         composable(route = Nav.HalfwayProgressScreen.name) { HalfwayProgress(navController) }
         composable(route = Nav.FinalResultScreen.name) { FinalResult(navController) }
@@ -183,10 +176,4 @@ fun ResetButton(modifier: Modifier) {
             Text(text = stringResource(R.string.reset), fontSize = 36.sp)
         }
     }
-}
-
-@Preview(showBackground = true, showSystemUi = false)
-@Composable
-fun GreetingPreview() {
-    RockPaperScissorsApp()
 }
