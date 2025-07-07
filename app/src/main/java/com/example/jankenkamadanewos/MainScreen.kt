@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun Main(navController: NavController){
+    val game = Game.create()
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -67,7 +68,8 @@ fun Main(navController: NavController){
                 contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate("ResultScreen/${MyHand.GU.ordinal}")
+                        game.setSelectedHand(myHand = MyHand.GU.ordinal)
+                        navController.navigate(Nav.ResultScreen.name)
                     }
                     .weight(1f)
             )
@@ -77,7 +79,8 @@ fun Main(navController: NavController){
                 contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate("ResultScreen/${MyHand.CH.ordinal}")
+                        game.setSelectedHand(myHand = MyHand.CH.ordinal)
+                        navController.navigate(Nav.ResultScreen.name)
                     }
                     .weight(1f)
             )
@@ -87,7 +90,8 @@ fun Main(navController: NavController){
                 contentDescription = null,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate("ResultScreen/${MyHand.CH.ordinal}")
+                        game.setSelectedHand(myHand = MyHand.PA.ordinal)
+                        navController.navigate(Nav.ResultScreen.name)
                     }
                     .weight(1f)
             )
@@ -106,24 +110,6 @@ fun Main(navController: NavController){
     }
 }
 
-//private fun clickGu() {
-//    val intent = Intent(application, ResultActivity::class.java)
-//    intent.putExtra("hand", MyHand.GU.ordinal)
-//    startActivity(intent)
-//}
-//
-//private fun clickCh() {
-//    val intent = Intent(application, ResultActivity::class.java)
-//    intent.putExtra("hand", MyHand.CH.ordinal)
-//    startActivity(intent)
-//}
-//
-//private fun clickPa() {
-//    val intent = Intent(application, ResultActivity::class.java)
-//    intent.putExtra("hand", MyHand.PA.ordinal)
-//    startActivity(intent)
-//}
-
 @Composable
 fun BattleShout(modifier: Modifier, fontSize: TextUnit) {
     val countApp = CountApp.create()
@@ -141,4 +127,10 @@ fun BattleShout(modifier: Modifier, fontSize: TextUnit) {
             modifier = modifier
         )
     }
+}
+
+enum class MyHand {
+    GU,
+    CH,
+    PA
 }

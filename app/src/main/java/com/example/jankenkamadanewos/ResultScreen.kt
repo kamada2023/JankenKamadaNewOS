@@ -21,8 +21,7 @@ import kotlin.random.Random
 
 private val countApp = CountApp.create()
 
-fun test(userId: Int): Int {
-    //val userId: Int = intent.getIntExtra("hand", 0)
+fun decisionOfVictoryOrDefeat(userId: Int): Int {
 
     countApp.setAddCount()
     val seed: Long = System.currentTimeMillis()
@@ -45,7 +44,7 @@ fun test(userId: Int): Int {
 
 @Composable
 fun Result(user: Int, navController:NavController) {
-    val cpu = test(userId = user)
+    val cpu = decisionOfVictoryOrDefeat(userId = user)
 
     Column(
         modifier = Modifier
@@ -183,10 +182,7 @@ fun ResultText(modifier: Modifier, user: Int, cpu: Int, fontSize: Int) {
 }
 
 private fun continueOrEnd():String {
-//    var conOrEnd: Intent
-//    val first = Intent(application, MainActivity::class.java)
-//    val end = Intent(application, FinalResultActivity::class.java)
-//    val con = Intent(application, HalfwayProgressActivity::class.java)
+
     var conOrEnd: String
     val first = Nav.MainScreen.name
     val end = Nav.FinalResultScreen.name

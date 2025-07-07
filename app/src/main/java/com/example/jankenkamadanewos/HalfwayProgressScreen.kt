@@ -12,14 +12,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-private val countApp = CountApp.create()
-private val battleCount: Int = countApp.getAddCount()
-private val countWin: Int = countApp.getWinCount()
-private val countLose: Int = countApp.getLoseCount()
-private val countDraw: Int = countApp.getDrawCount()
-
 @Composable
 fun HalfwayProgress(navController: NavController) {
+    val countApp = CountApp.create()
+    val battleCount: Int = countApp.getAddCount()
+    val countWin: Int = countApp.getWinCount()
+    val countLose: Int = countApp.getLoseCount()
+    val countDraw: Int = countApp.getDrawCount()
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
             text = stringResource(id = R.string.halfway_title),
