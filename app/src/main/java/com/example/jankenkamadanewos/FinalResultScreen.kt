@@ -16,12 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 
-
-private val countApp = CountApp.create()
-private val countWin: Int = countApp.getWinCount()
-private val countLose: Int = countApp.getLoseCount()
-private val countDraw: Int = countApp.getDrawCount()
-
 enum class Result {
     WIN,
     LOSE,
@@ -30,6 +24,11 @@ enum class Result {
 
 @Composable
 fun FinalResult(navController: NavController) {
+    val countApp = CountApp.create()
+    val countWin: Int = countApp.getWinCount()
+    val countLose: Int = countApp.getLoseCount()
+    val countDraw: Int = countApp.getDrawCount()
+
     var finResult: Int
     finResult = if (countWin > countLose) {
         countApp.setNumOfWins()
