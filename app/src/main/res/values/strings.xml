@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">じゃんけんゲームjetpackCompose</string>
+    <string name="app_name">じゃんけんゲームNewOS</string>
     <string name="chara_speech">僕と勝負だ！！</string>
     <string name="total_result">%1$d勝ち%2$d負け%3$d引き分け</string>
     <string name="battle_format">対戦形式</string>

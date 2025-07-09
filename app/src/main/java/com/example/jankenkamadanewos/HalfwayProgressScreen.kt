@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
@@ -19,7 +21,9 @@ fun HalfwayProgress(navController: NavController) {
     val countWin: Int = countApp.getWinCount()
     val countLose: Int = countApp.getLoseCount()
     val countDraw: Int = countApp.getDrawCount()
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .semantics { contentDescription = Nav.HalfwayProgressScreen.name }
+        .fillMaxSize()) {
         Text(
             text = stringResource(id = R.string.halfway_title),
             fontSize = 30.sp,

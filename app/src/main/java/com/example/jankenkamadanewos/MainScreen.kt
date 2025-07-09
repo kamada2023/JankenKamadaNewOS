@@ -13,6 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -22,7 +24,7 @@ import androidx.navigation.NavController
 fun Main(navController: NavController){
     val game = Game.create()
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().semantics { contentDescription = Nav.MainScreen.name }
     ) {
         val (
             battleShout,
@@ -67,6 +69,7 @@ fun Main(navController: NavController){
                 painter = painterResource(id = R.drawable.j_gu02),
                 contentDescription = null,
                 modifier = Modifier
+                    .semantics { contentDescription = "GU" }
                     .clickable {
                         game.setSelectedHand(myHand = MyHand.GU.ordinal)
                         navController.navigate(Nav.ResultScreen.name)
@@ -78,6 +81,7 @@ fun Main(navController: NavController){
                 painter = painterResource(id = R.drawable.j_ch02),
                 contentDescription = null,
                 modifier = Modifier
+                    .semantics { contentDescription = "CH" }
                     .clickable {
                         game.setSelectedHand(myHand = MyHand.CH.ordinal)
                         navController.navigate(Nav.ResultScreen.name)
@@ -89,6 +93,7 @@ fun Main(navController: NavController){
                 painter = painterResource(id = R.drawable.j_pa02),
                 contentDescription = null,
                 modifier = Modifier
+                    .semantics { contentDescription = "PA" }
                     .clickable {
                         game.setSelectedHand(myHand = MyHand.PA.ordinal)
                         navController.navigate(Nav.ResultScreen.name)

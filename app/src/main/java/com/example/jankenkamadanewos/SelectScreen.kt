@@ -13,6 +13,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
@@ -25,7 +27,7 @@ fun Select(navController: NavController) {
     var ruleText: String
 
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().semantics { contentDescription = Nav.SelectScreen.name }
     ) {
         val (
             battleFormat,
@@ -66,7 +68,8 @@ fun Select(navController: NavController) {
                 value = mode.toFloat(), onValueChange = { mode = it.toInt() },
                 enabled = true,
                 valueRange = 0f..1f,
-                steps = 1
+                steps = 1,
+                modifier = Modifier.semantics { contentDescription = "対戦形式のスライダー" }
             )
         }
 
@@ -86,6 +89,7 @@ fun Select(navController: NavController) {
                 enabled = true,
                 steps = 9,
                 modifier = Modifier.weight(3.3f, false)
+                    .semantics { contentDescription = "回数のスライダー" }
             )
 
             Text(

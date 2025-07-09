@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
 
 enum class Result {
@@ -50,6 +52,7 @@ fun FinalResult(navController: NavController) {
 
     Column(
         modifier = Modifier
+            .semantics { contentDescription = Nav.FinalResultScreen.name }
             .fillMaxSize()
             .padding(20.dp)
     ) {

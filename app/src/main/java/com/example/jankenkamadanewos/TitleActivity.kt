@@ -19,6 +19,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -66,7 +68,7 @@ fun RockPaperScissorsApp(){
 @Composable
 fun Title(navController: NavController) {
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().semantics { contentDescription = Nav.TitleScreen.name }
     ) {
         val (
             button,
@@ -172,6 +174,7 @@ fun ResetButton(modifier: Modifier) {
                 clearDraw = 0
             },
             shape = MaterialTheme.shapes.small,
+            modifier = Modifier.semantics { contentDescription = "勝敗数のリセットボタン" }
         ) {
             Text(text = stringResource(R.string.reset), fontSize = 36.sp)
         }

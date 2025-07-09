@@ -5,7 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GreetingPreview">
+      <SelectionState runConfigName="usersHandGu_cpusHandGu_Test()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="navHost_RoundRobinGame_3rdRound_win()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="navHost_RoundRobinGame_3rdRound_lose()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="navHost_StarGame_5thRound_WinningInTheMiddle()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="navHost_StarGame_5thRound_LostInTheMiddle()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

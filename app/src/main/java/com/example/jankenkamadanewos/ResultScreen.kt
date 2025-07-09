@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -21,33 +23,38 @@ import kotlin.random.Random
 
 private val countApp = CountApp.create()
 
-fun decisionOfVictoryOrDefeat(userId: Int): Int {
-
-    countApp.setAddCount()
+fun determinesCPUsHand(): Int {
     val seed: Long = System.currentTimeMillis()
     val cpu: Int = Random(seed).nextInt(3)
-    if (userId == cpu) {
-        if (countApp.getAddCount() <= countApp.getCount()) {
-            countApp.setDrawCount()
-        }
-    } else if ((userId == 2 && cpu == 0) || ((userId + 1) == cpu)) {
-        if (countApp.getAddCount() <= countApp.getCount()) {
-            countApp.setWinCount()
-        }
-    } else {
-        if (countApp.getAddCount() <= countApp.getCount()) {
-            countApp.setLoseCount()
-        }
-    }
     return cpu
 }
 
 @Composable
 fun Result(user: Int, navController:NavController) {
-    val cpu = decisionOfVictoryOrDefeat(userId = user)
+    val cpu = determinesCPUsHand()
+    ResultScreen(user, navController, cpu)
+}
+
+@Composable
+fun ResultScreen(user: Int, navController:NavController, cpu: Int) {
+    if (user == cpu) {
+        if (countApp.getAddCount() < countApp.getCount()) {
+            countApp.setDrawCount()
+        }
+    } else if ((user == 2 && cpu == 0) || ((user + 1) == cpu)) {
+        if (countApp.getAddCount() < countApp.getCount()) {
+            countApp.setWinCount()
+        }
+    } else {
+        if (countApp.getAddCount() < countApp.getCount()) {
+            countApp.setLoseCount()
+        }
+    }
+    countApp.setAddCount()
 
     Column(
         modifier = Modifier
+            .semantics { contentDescription = Nav.ResultScreen.name }
             .fillMaxSize()
             .padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -87,20 +94,23 @@ fun Result(user: Int, navController:NavController) {
             HandImage(id = user)
         }
 
+        val conOrEnd = continueOrEnd()
+
         Button(
-            onClick = {
-                val conOrEnd = continueOrEnd()
-                navController.navigate(conOrEnd)
-                      },
+            onClick = { navController.navigate(conOrEnd) },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = if (countApp.getCount() == countApp.getAddCount()) {
-                    stringResource(id = R.string.next_result)
-                } else if (countApp.getAddCount() == 1) {
-                    stringResource(id = R.string.next_battle)
-                } else {
-                    stringResource(id = R.string.next_scene)
+                text = when (conOrEnd) {
+                    Nav.FinalResultScreen.name -> {
+                        stringResource(id = R.string.next_result)
+                    }
+                    Nav.MainScreen.name -> {
+                        stringResource(id = R.string.next_battle)
+                    }
+                    else -> {
+                        stringResource(id = R.string.next_scene)
+                    }
                 }
             )
         }

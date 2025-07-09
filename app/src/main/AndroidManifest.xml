@@ -15,7 +15,6 @@
         <activity
             android:name=".TitleActivity"
             android:exported="true"
-            android:label="@string/title_activity_title"
             android:theme="@style/Theme.JankenKamadaNewOS">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
