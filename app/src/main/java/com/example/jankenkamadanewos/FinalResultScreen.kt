@@ -1,5 +1,6 @@
 package com.example.jankenkamadanewos
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -105,6 +106,7 @@ fun FinalResult(navController: NavController) {
             Text(text = stringResource(id = R.string.back_title))
         }
     }
+    BackHandler(enabled = true) { }
 }
 
 @Composable
@@ -135,6 +137,3 @@ fun ResultImage(modifier: Modifier, result: Int) {
         }
     }
 }
-
-//override fun onBackPressed() {
-//}

@@ -3,6 +3,7 @@ package com.example.jankenkamadanewos
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
@@ -21,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
@@ -138,6 +138,7 @@ fun Title(navController: NavController) {
             Text(text = stringResource(R.string.next_scene), fontSize = 36.sp)
         }
     }
+    BackHandler(enabled = true) { }
 }
 
 @SuppressLint("UnrememberedMutableState", "RememberReturnType")
